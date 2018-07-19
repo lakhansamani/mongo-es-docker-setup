@@ -12,7 +12,7 @@ services:
       - "mongo-rs0-2"
       - "mongo-rs0-3"
     networks:
-      - otaras
+      - local
 
   mongo-rs0-2:
     image: "mongo:3.4.1"
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./mongo-data/mongo-rs0-2/data:/data/db
     networks:
-      - otaras
+      - local
 
   mongo-rs0-3:
     image: "mongo:3.4.1"
@@ -34,7 +34,7 @@ services:
     volumes:
       - ./mongo-data/mongo-rs0-3/data:/data/db
     networks:
-      - otaras
+      - local
 
   setup-rs:
     image: "setup-rs"
@@ -43,7 +43,7 @@ services:
     depends_on:
       - "mongo-rs0-1"
     networks:
-      - otaras
+      - local
 
 
   elasticsearch:
@@ -63,13 +63,13 @@ services:
     ports:
       - 9200:9200
     networks:
-      - otaras
+      - local
 
   abc:
     image: appbaseio/abc
     container_name: abc
     networks:
-      - otaras
+      - local
 
 volumes:
   mongo-rs0-1:
@@ -79,4 +79,4 @@ volumes:
   elasticsearch:
     driver: local
 networks:
-  otaras:
+  local:
