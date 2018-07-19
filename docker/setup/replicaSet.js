@@ -8,5 +8,5 @@ rsconf = {
 }
 
 rs.initiate(rsconf);
-
+rs.slaveOk();
 rs.conf();
